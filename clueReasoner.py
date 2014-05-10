@@ -63,14 +63,12 @@ def initialClauses():
     # [~c_ip_1, ~c_ip_2, c_ip_3]
     for c in cards:
         for p in extendedPlayers:
-            moreClauses = []
-            moreClauses.append(getPairNumFromNames(p,c))
+            clauses.append([getPairNumFromNames(p,c),-getPairNumFromNames(p,c)])
             for others in extendedPlayers:
                 if p == others:
                     pass
                 else:
-                    moreClauses.append(-getPairNumFromNames(others,c))
-            clauses.append(moreClauses)
+                    clauses.append([-getPairNumFromNames(others,c),-getPairNumFromNames(p,c)])
 
     # At least one card of each category is in the case file.
     clauses.append([getPairNumFromNames("cf",s) for s in suspects])
@@ -79,34 +77,28 @@ def initialClauses():
 
     # No two cards in each category can both be in the case file.
     for s in suspects:
-        moreClauses = []
-        moreClauses.append(-getPairNumFromNames("cf",s))
+        clauses.append([getPairNumFromNames("cf",s),-getPairNumFromNames("cf",s)])
         for otherS in suspects:
             if s == otherS:
                 pass
             else:
-                moreClauses.append(-getPairNumFromNames("cf",otherS))
-        clauses.append(moreClauses)
+                clauses.append([-getPairNumFromNames("cf",otherS),-getPairNumFromNames("cf",s)])
 
     for w in weapons:
-        moreClauses = []
-        moreClauses.append(-getPairNumFromNames("cf",w))
+        clauses.append([getPairNumFromNames("cf",w),-getPairNumFromNames("cf",w)])
         for otherW in weapons:
-            if w == others:
+            if w == otherW:
                 pass
             else:
-                moreClauses.append(-getPairNumFromNames("cf",otherW))
-        clauses.append(moreClauses)
+                clauses.append([-getPairNumFromNames("cf",otherW),-getPairNumFromNames("cf",w)])
 
     for r in rooms:
-        moreClauses = []
-        moreClauses.append(-getPairNumFromNames("cf",r))
+        clauses.append([getPairNumFromNames("cf",r),-getPairNumFromNames("cf",r)])
         for otherR in rooms:
-            if r == others:
+            if r == otherR:
                 pass
             else:
-                moreClauses.append(-getPairNumFromNames("cf",otherR))
-        clauses.append(moreClauses)
+                clauses.append([-getPairNumFromNames("cf",otherR),-getPairNumFromNames("cf",r)])
 
     return clauses
 
