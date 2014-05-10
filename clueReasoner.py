@@ -119,42 +119,42 @@ def hand(player,cards):
 # TO BE IMPLEMENTED AS AN EXERCISE
 def suggest(suggester,card1,card2,card3,refuter,cardShown):
     toAddClauses = []
-    # if refuter == None:
-    #     for p in players:
-    #         if p == suggester:
-    #             pass
-    #         else:
-    #             toAddClauses.append([-getPairNumFromNames(p,card1)])
-    #             toAddClauses.append([-getPairNumFromNames(p,card2)])
-    #             toAddClauses.append([-getPairNumFromNames(p,card3)])
-    #     return toAddClauses        
+    if refuter == None:
+        for p in players:
+            if p == suggester:
+                pass
+            else:
+                toAddClauses.append([-getPairNumFromNames(p,card1)])
+                toAddClauses.append([-getPairNumFromNames(p,card2)])
+                toAddClauses.append([-getPairNumFromNames(p,card3)])
+        return toAddClauses        
 
-    # index = players.index(suggester)
-    # while(index != players.index(refuter)):
-    #     index += 1
-    #     index = index%len(players)
-    #     toAddClauses.append([-getPairNumFromNames(players[index],card1)])
-    #     toAddClauses.append([-getPairNumFromNames(players[index],card2)])
-    #     toAddClauses.append([-getPairNumFromNames(players[index],card3)])
+    index = players.index(suggester)
+    while(index != players.index(refuter)):
+        index += 1
+        index = index%len(players)
+        toAddClauses.append([-getPairNumFromNames(players[index],card1)])
+        toAddClauses.append([-getPairNumFromNames(players[index],card2)])
+        toAddClauses.append([-getPairNumFromNames(players[index],card3)])
         
-    # if cardShown == None:
-    #     toAddClauses.append([getPairNumFromNames(refuter,card1), 
-    #                          getPairNumFromNames(refuter,card2), 
-    #                          getPairNumFromNames(refuter,card3)])
+    if cardShown == None:
+        toAddClauses.append([getPairNumFromNames(refuter,card1), 
+                             getPairNumFromNames(refuter,card2), 
+                             getPairNumFromNames(refuter,card3)])
         
-    # else:
-    #     toAddClauses.append([getPairNumFromNames(refuter,cardShown)])
+    else:
+        toAddClauses.append([getPairNumFromNames(refuter,cardShown)])
         
     return toAddClauses
 
 # TO BE IMPLEMENTED AS AN EXERCISE
 def accuse(accuser,card1,card2,card3,isCorrect):
     toAddClauses = []
-    # cards = [card1,card2,card3]
-    # for c in cards:
-    #     if isCorrect:
-    #         toAddClauses.append([getPairNumFromNames("cf",c)])
-    #     toAddClauses.append([-getPairNumFromNames(accuser,c)])
+    cards = [card1,card2,card3]
+    for c in cards:
+        if isCorrect:
+            toAddClauses.append([getPairNumFromNames("cf",c)])
+        toAddClauses.append([-getPairNumFromNames(accuser,c)])
 
     return toAddClauses
 
