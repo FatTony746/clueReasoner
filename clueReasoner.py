@@ -82,7 +82,7 @@ def initialClauses():
     # No two cards in each category can both be in the case file.
     for s in suspects:
         moreClauses = []
-        moreClauses.append(getPairNumFromNames("cf",s))
+        moreClauses.append(-getPairNumFromNames("cf",s))
         for otherS in suspects:
             if s == otherS:
                 pass
@@ -92,7 +92,7 @@ def initialClauses():
 
     for w in weapons:
         moreClauses = []
-        moreClauses.append(getPairNumFromNames("cf",w))
+        moreClauses.append(-getPairNumFromNames("cf",w))
         for otherW in weapons:
             if w == others:
                 pass
@@ -102,7 +102,7 @@ def initialClauses():
 
     for r in rooms:
         moreClauses = []
-        moreClauses.append(getPairNumFromNames("cf",r))
+        moreClauses.append(-getPairNumFromNames("cf",r))
         for otherR in rooms:
             if r == others:
                 pass
@@ -114,8 +114,7 @@ def initialClauses():
 
 # TO BE IMPLEMENTED AS AN EXERCISE
 def hand(player,cards):
-    return []
-    # return [[getPairNumFromNames(player,c)] for c in cards]
+    return [[getPairNumFromNames(player,c)] for c in cards]
 
 # TO BE IMPLEMENTED AS AN EXERCISE
 def suggest(suggester,card1,card2,card3,refuter,cardShown):
@@ -140,7 +139,7 @@ def suggest(suggester,card1,card2,card3,refuter,cardShown):
         
     # if cardShown == None:
     #     toAddClauses.append([getPairNumFromNames(refuter,card1), 
-    #                          getPairNumFromNames(refuter,card3), 
+    #                          getPairNumFromNames(refuter,card2), 
     #                          getPairNumFromNames(refuter,card3)])
         
     # else:
