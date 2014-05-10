@@ -114,6 +114,7 @@ def initialClauses():
 
 # TO BE IMPLEMENTED AS AN EXERCISE
 def hand(player,cards):
+    return []
     return [[getPairNumFromNames(player,c)] for c in cards]
 
 # TO BE IMPLEMENTED AS AN EXERCISE
