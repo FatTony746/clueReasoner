@@ -73,12 +73,10 @@ def initialClauses():
             clauses.append(moreClauses)
 
     # At least one card of each category is in the case file.
-    for s in suspects:
-        clauses.append([getPairNumFromNames("cf",s) for p in extendedPlayers])
-    for w in weapons:
-        clauses.append([getPairNumFromNames("cf",w) for p in extendedPlayers])
-    for r in rooms:
-        clauses.append([getPairNumFromNames("cf",r) for p in extendedPlayers])
+    clauses.append([getPairNumFromNames("cf",s) for s in suspects])
+    clauses.append([getPairNumFromNames("cf",w) for w in suspects])
+    clauses.append([getPairNumFromNames("cf",r) for r in suspects])
+
     # No two cards in each category can both be in the case file.
     for s in suspects:
         moreClauses = []
