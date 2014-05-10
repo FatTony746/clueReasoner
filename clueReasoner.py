@@ -150,11 +150,20 @@ def suggest(suggester,card1,card2,card3,refuter,cardShown):
 # TO BE IMPLEMENTED AS AN EXERCISE
 def accuse(accuser,card1,card2,card3,isCorrect):
     toAddClauses = []
-    cards = [card1,card2,card3]
-    for c in cards:
-        if isCorrect:
-            toAddClauses.append([getPairNumFromNames("cf",c)])
-        toAddClauses.append([-getPairNumFromNames(accuser,c)])
+    
+    if isCorrect:
+        toAddClauses.append([getPairNumFromNames("cf",card1)])
+        toAddClauses.append([getPairNumFromNames("cf",card2)])
+        toAddClauses.append([getPairNumFromNames("cf",card3)])
+
+    else:
+        toAddClauses.append([getPairNumFromNames("cf", card1),
+                             getPairNumFromNames("cf", card2),
+                             getPairNumFromNames("cf", card3)])
+
+    toAddClauses.append([-getPairNumFromNames(accuser,card1)])
+    toAddClauses.append([-getPairNumFromNames(accuser,card2)])
+    toAddClauses.append([-getPairNumFromNames(accuser,card3)])
 
     return toAddClauses
 
