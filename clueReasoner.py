@@ -157,9 +157,9 @@ def accuse(accuser,card1,card2,card3,isCorrect):
         toAddClauses.append([getPairNumFromNames("cf",card3)])
 
     else:
-        toAddClauses.append([getPairNumFromNames("cf", card1),
-                             getPairNumFromNames("cf", card2),
-                             getPairNumFromNames("cf", card3)])
+        toAddClauses.append([-getPairNumFromNames("cf", card1),
+                             -getPairNumFromNames("cf", card2),
+                             -getPairNumFromNames("cf", card3)])
 
     toAddClauses.append([-getPairNumFromNames(accuser,card1)])
     toAddClauses.append([-getPairNumFromNames(accuser,card2)])
